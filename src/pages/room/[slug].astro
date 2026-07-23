@@ -36,7 +36,7 @@ const { room } = Astro.props;
           
           <h3 class="text-2xl font-heading font-bold mb-4">Amenities & Features</h3>
           <ul class="grid grid-cols-2 gap-4 text-gray-700 mb-8">
-            {room.facilities.map(facility => (
+            {room.facilities.map((facility: unknown) => (
               <li class="flex items-center gap-2">
                 <span class="text-secondary">✓</span> {facility}
               </li>

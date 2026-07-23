@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../../utils/seoConfig';
+import { landingPages } from '../../data/seoPages';
 const currentYear = new Date().getFullYear();
 ---
 <footer class="bg-dark text-white pt-16 pb-8">
@@ -41,6 +42,17 @@ const currentYear = new Date().getFullYear();
           <li>WhatsApp: <a href={`https://wa.me/${SITE.whatsapp}`} class="hover:text-secondary">{SITE.whatsapp}</a></li>
           <li>Email: <a href={`mailto:${SITE.email}`} class="hover:text-secondary">{SITE.email}</a></li>
         </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-700 pt-8 pb-4 mb-4">
+      <h4 class="text-lg font-heading font-semibold mb-4 text-center text-gray-300">Popular Searches</h4>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+        {landingPages.map(page => (
+          <a href={`/${page.slug}`} class="text-gray-400 hover:text-secondary text-sm transition-colors">
+            {page.title}
+          </a>
+        ))}
       </div>
     </div>
     

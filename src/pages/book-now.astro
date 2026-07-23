@@ -14,22 +14,25 @@ import Button from '../components/ui/Button.astro';
   <section class="py-20 bg-background">
     <div class="container mx-auto px-4 max-w-3xl">
       <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
-        <form class="space-y-6">
+        <form id="booking-form" class="space-y-6">
+          <input type="hidden" name="access_key" value="f76f3769-59f0-4a81-a763-486a7585e82c" />
+          <input type="hidden" name="subject" value="New Hotel Booking Request" />
+          
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Check-In Date</label>
-              <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+              <label for="check_in" class="block text-sm font-medium text-gray-700 mb-2">Check-In Date</label>
+              <input id="check_in" type="date" name="check_in" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Check-Out Date</label>
-              <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+              <label for="check_out" class="block text-sm font-medium text-gray-700 mb-2">Check-Out Date</label>
+              <input id="check_out" type="date" name="check_out" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
             </div>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Adults</label>
-              <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+              <label for="adults" class="block text-sm font-medium text-gray-700 mb-2">Adults</label>
+              <select id="adults" name="adults" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
                 <option>1</option>
                 <option selected>2</option>
                 <option>3</option>
@@ -37,8 +40,8 @@ import Button from '../components/ui/Button.astro';
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Children</label>
-              <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+              <label for="children" class="block text-sm font-medium text-gray-700 mb-2">Children</label>
+              <select id="children" name="children" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
                 <option selected>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -46,8 +49,8 @@ import Button from '../components/ui/Button.astro';
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Room Type</label>
-              <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+              <label for="room_type" class="block text-sm font-medium text-gray-700 mb-2">Room Type</label>
+              <select id="room_type" name="room_type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
                 <option>Deluxe Room</option>
                 <option>Premium Room</option>
                 <option>Luxury Suite</option>
@@ -57,25 +60,30 @@ import Button from '../components/ui/Button.astro';
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-              <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+              <input id="name" type="text" name="name" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input id="email" type="email" name="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
             </div>
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-            <input type="tel" placeholder="+1 234 567 8900" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+            <input id="phone" type="tel" name="phone" placeholder="+1 234 567 8900" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Special Requests (Optional)</label>
-            <textarea rows="4" placeholder="Any special requests or preferences..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"></textarea>
+            <label for="requests" class="block text-sm font-medium text-gray-700 mb-2">Special Requests (Optional)</label>
+            <textarea id="requests" name="requests" rows="4" placeholder="Any special requests or preferences..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"></textarea>
           </div>
           
+          <div>
+            <label for="captcha" class="block text-sm font-medium text-gray-700 mb-2">Security Check: What is <span id="num1"></span> + <span id="num2"></span>?</label>
+            <input id="captcha" type="number" name="captcha" placeholder="Your answer" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required />
+          </div>
+
           <div class="pt-4">
             <Button type="submit" variant="primary" className="w-full text-lg py-4">Confirm Booking</Button>
           </div>
@@ -83,4 +91,78 @@ import Button from '../components/ui/Button.astro';
       </div>
     </div>
   </section>
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script is:inline>
+    const form = document.getElementById('booking-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Captcha Logic
+    let num1 = Math.floor(Math.random() * 10) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+    document.getElementById('num1').innerText = num1;
+    document.getElementById('num2').innerText = num2;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const captchaInput = document.getElementById('captcha').value;
+      if (parseInt(captchaInput) !== num1 + num2) {
+        Swal.fire({
+          title: "Error!",
+          text: "Incorrect math answer. Please try again.",
+          icon: "error",
+          confirmButtonColor: '#ef4444'
+        });
+        return;
+      }
+
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+      formData.delete('captcha');
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          Swal.fire({
+            title: "Booking Confirmed!",
+            text: "Your booking request has been successfully sent.",
+            icon: "success",
+            confirmButtonColor: '#3b82f6'
+          });
+          form.reset();
+          num1 = Math.floor(Math.random() * 10) + 1;
+          num2 = Math.floor(Math.random() * 10) + 1;
+          document.getElementById('num1').innerText = num1;
+          document.getElementById('num2').innerText = num2;
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: json.message || "Something went wrong.",
+            icon: "error",
+            confirmButtonColor: '#ef4444'
+          });
+        }
+      })
+      .catch(error => {
+        Swal.fire({
+            title: "Error!",
+            text: "Something went wrong! Please try again later.",
+            icon: "error",
+            confirmButtonColor: '#ef4444'
+        });
+      })
+      .finally(() => {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
 </Layout>
