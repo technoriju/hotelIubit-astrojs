@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import RoomCard from '../components/ui/RoomCard.astro';
+import { rooms } from '../data/rooms';
+---
+
+<Layout title="Hotel Iubit | Luxury & Comfort in the Heart of the City" description="Experience 5-star luxury at Hotel Iubit. Book directly for the best rates.">
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="/hero/hotel-IUBIT-front-image.webp" alt="Luxury Hotel Exterior" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 drop-shadow-lg">Experience Pure Luxury</h1>
+      <p class="text-xl md:text-2xl mb-10 font-light drop-shadow-md">Discover an unforgettable stay at Hotel Iubit with world-class amenities and unparalleled comfort.</p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <Button href="/book-now" variant="primary" className="text-lg px-8 py-4">Book Your Stay Now</Button>
+        <Button href="/room" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-dark">View Our Rooms</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Rooms Section -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-heading font-bold text-dark mb-4">Our Signature Rooms</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg">Designed for ultimate relaxation. Choose from our exquisitely appointed rooms and suites.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {rooms.map(room => (
+          <RoomCard {...room} />
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <Button href="/room" variant="secondary">View All Accommodations</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust / Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <div class="p-6 rounded-2xl hover:shadow-xl transition-shadow bg-gray-50 border border-gray-100">
+          <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Best Rate Guarantee</h3>
+          <p class="text-gray-600">Book directly with us to ensure you receive the lowest price available.</p>
+        </div>
+        
+        <div class="p-6 rounded-2xl hover:shadow-xl transition-shadow bg-gray-50 border border-gray-100">
+          <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Premium Location</h3>
+          <p class="text-gray-600">Situated in the heart of the city, minutes away from top attractions.</p>
+        </div>
+        
+        <div class="p-6 rounded-2xl hover:shadow-xl transition-shadow bg-gray-50 border border-gray-100">
+          <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">5-Star Service</h3>
+          <p class="text-gray-600">Experience world-class hospitality tailored to your every need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-heading font-bold mb-6">Ready for an Unforgettable Stay?</h2>
+      <p class="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">Book your luxury experience today and let us take care of the rest.</p>
+      <Button href="/book-now" variant="secondary" className="text-lg px-10 py-4 shadow-xl">Reserve Your Stay</Button>
+    </div>
+  </section>
+</Layout>

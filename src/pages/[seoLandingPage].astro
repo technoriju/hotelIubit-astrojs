@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import RoomCard from '../components/ui/RoomCard.astro';
+import { rooms } from '../data/rooms';
+
+export function getStaticPaths() {
+  const landingPages = [
+    { slug: 'hotel-in-kolkata', title: 'Best Hotel in Kolkata', heading: 'Discover the Best Hotel in Kolkata' },
+    { slug: 'budget-hotel', title: 'Affordable Budget Hotel', heading: 'Premium Comfort on a Budget' },
+    { slug: 'luxury-hotel', title: '5-Star Luxury Hotel', heading: 'Experience Ultimate Luxury' },
+    { slug: 'family-hotel', title: 'Family Friendly Hotel', heading: 'Perfect Stay for Your Family' },
+    { slug: 'business-hotel', title: 'Corporate Business Hotel', heading: 'Your Ideal Business Partner' },
+    { slug: 'hotel-near-airport', title: 'Hotel Near Airport', heading: 'Convenient Stay Near the Airport' },
+    { slug: 'hotel-near-railway-station', title: 'Hotel Near Railway Station', heading: 'Centrally Located Comfort' },
+    { slug: 'weekend-stay', title: 'Weekend Getaway Stay', heading: 'Relaxing Weekend Retreats' },
+    { slug: 'couple-friendly-hotel', title: 'Couple Friendly Hotel', heading: 'Romantic Getaways for Couples' },
+    { slug: 'conference-hotel', title: 'Conference & Event Hotel', heading: 'Host Your Events with Us' },
+  ];
+
+  return landingPages.map(page => ({
+    params: { seoLandingPage: page.slug },
+    props: { ...page },
+  }));
+}
+
+const { title, heading } = Astro.props;
+---
+
+<Layout title={`${title} | Hotel Iubit`} description={`Looking for a ${title.toLowerCase()}? Hotel Iubit offers luxury, comfort, and the best rates.`}>
+  <div class="bg-primary text-white py-24 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{heading}</h1>
+      <p class="text-xl max-w-2xl mx-auto opacity-90">Enjoy premium amenities, fast booking, and 5-star service.</p>
+    </div>
+  </div>
+  
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center mb-12">
+      <h2 class="text-3xl font-heading font-bold mb-4">Why Choose Us?</h2>
+      <div class="flex justify-center gap-6 flex-wrap mt-8">
+        <span class="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full font-medium"><span class="text-secondary">✓</span> Fast Booking</span>
+        <span class="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full font-medium"><span class="text-secondary">✓</span> 5-Star Reviews</span>
+        <span class="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full font-medium"><span class="text-secondary">✓</span> Prime Location</span>
+        <span class="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full font-medium"><span class="text-secondary">✓</span> Lowest Price Guarantee</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-background">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold text-center mb-12">Available Rooms</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {rooms.map(room => (
+          <RoomCard {...room} />
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 bg-dark text-white text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold mb-6">Ready to Book?</h2>
+      <p class="mb-8">Call us directly or book online for immediate confirmation.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/book-now" variant="primary">Book Now</Button>
+        <Button href="tel:+12345678900" variant="secondary">Call Now</Button>
+      </div>
+    </div>
+  </section>
+</Layout>

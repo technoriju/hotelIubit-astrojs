@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Fetch images from the public/gallery directory
+const galleryDir = path.join(process.cwd(), 'public', 'gallery');
+let images: string[] = [];
+
+try {
+  if (fs.existsSync(galleryDir)) {
+    const files = fs.readdirSync(galleryDir);
+    images = files.filter(file => /\.(jpg|jpeg|png|webp|gif)$/i.test(file));
+  }
+} catch (e) {
+  console.error('Error reading gallery directory:', e);
+}
+---
+
+<Layout title="Photo Gallery | Hotel Iubit" description="Learn more about Photo Gallery at Hotel Iubit.">
+  <div class="bg-primary text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold">Photo Gallery</h1>
+    </div>
+  </div>
+  
+  <section class="py-20 bg-background min-h-[50vh]">
+    <div class="container mx-auto px-4 max-w-6xl">
+      {images.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {images.map((image) => (
+            <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 group">
+              <img 
+                src={`/gallery/${image}`} 
+                alt="Hotel Iubit Gallery Photo" 
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-xl text-center text-gray-500">More photos coming soon. Please check back later.</p>
+      )}
+    </div>
+  </section>
+</Layout>

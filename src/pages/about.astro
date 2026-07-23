@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Layout title="About Us | Hotel Iubit" description="Learn about Hotel Iubit's rich history of luxury hospitality and our commitment to excellence.">
+  <div class="relative h-[50vh]">
+    <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=2000" alt="Hotel Interior" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="text-white">
+        <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4">Our Story</h1>
+        <p class="text-xl md:text-2xl font-light">A Legacy of Luxury</p>
+      </div>
+    </div>
+  </div>
+  
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-heading font-bold text-primary mb-6">Welcome to Hotel Iubit</h2>
+          <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+            Founded with a vision to redefine luxury hospitality, Hotel Iubit stands as a beacon of elegance in the heart of the city. We blend timeless architecture with modern comforts to offer an unparalleled experience.
+          </p>
+          <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+            Our dedicated team is committed to providing personalized service that anticipates your every need. From our award-winning culinary team to our expert concierges, every aspect of your stay is carefully curated.
+          </p>
+          <Button href="/room" variant="outline">Explore Our Rooms</Button>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-secondary rounded-2xl transform translate-x-4 translate-y-4"></div>
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800" alt="Hotel Staff" class="relative z-10 rounded-2xl shadow-xl w-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 bg-background text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold mb-12">Our Core Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🌟</div>
+          <h3 class="text-xl font-bold mb-3">Excellence</h3>
+          <p class="text-gray-600">We strive for perfection in everything we do, ensuring the highest standards of service.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold mb-3">Integrity</h3>
+          <p class="text-gray-600">We conduct our business with honesty, transparency, and a commitment to our guests.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">💖</div>
+          <h3 class="text-xl font-bold mb-3">Passion</h3>
+          <p class="text-gray-600">Our passion for hospitality drives us to create memorable moments for every guest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

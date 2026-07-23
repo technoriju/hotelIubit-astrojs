@@ -1,0 +1,80 @@
+---
+import { SITE } from '../../utils/seoConfig';
+---
+<style>
+  @keyframes blinkBgRed {
+    0%, 100% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #ef4444; /* Tailwind red-500 */
+      color: white;
+    }
+  }
+  .animate-blink-red {
+    animation: blinkBgRed 2s infinite;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+</style>
+<header class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="/hotel-iubit-logo.webp" alt={SITE.name} class="h-12 w-auto object-contain" />
+    </a>
+    
+    <nav class="hidden md:flex space-x-8 text-dark font-medium">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <a href="/room" class="hover:text-primary transition-colors">Rooms</a>
+      <a href="/gallery" class="hover:text-primary transition-colors">Gallery</a>
+      <a href="/about" class="hover:text-primary transition-colors">About</a>
+      <a href="/contact" class="hover:text-primary transition-colors">Contact</a>
+    </nav>
+    
+    <div class="hidden md:flex items-center space-x-4">
+      <a href={`tel:${SITE.phone}`} class="animate-blink-red text-primary font-semibold transition-colors">
+        {SITE.phone}
+      </a>
+      <a href="/book-now" class="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg">
+        Book Now
+      </a>
+    </div>
+    <a href={`tel:${SITE.phone}`} class="md:hidden animate-blink-red text-primary font-semibold text-sm">
+      {SITE.phone}
+    </a>
+    
+    <button id="mobile-menu-btn" class="md:hidden text-primary" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t absolute w-full left-0 top-full shadow-lg">
+    <nav class="flex flex-col px-4 py-6 space-y-4 text-dark font-medium">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <a href="/room" class="hover:text-primary transition-colors">Rooms</a>
+      <a href="/gallery" class="hover:text-primary transition-colors">Gallery</a>
+      <a href="/about" class="hover:text-primary transition-colors">About</a>
+      <a href="/contact" class="hover:text-primary transition-colors">Contact</a>
+
+      <a href="/book-now" class="bg-primary text-white px-6 py-2 rounded-full font-medium text-center hover:bg-primary/90 transition-all shadow-md">
+        Book Now
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>

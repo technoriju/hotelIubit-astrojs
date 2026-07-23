@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/ui/Button.astro';
+import { rooms } from '../../data/rooms';
+
+export function getStaticPaths() {
+  return rooms.map(room => ({
+    params: { slug: room.slug },
+    props: { room },
+  }));
+}
+
+const { room } = Astro.props;
+---
+
+<Layout title={`${room.title} | Hotel Iubit`} description={`Book the ${room.title} at Hotel Iubit. Enjoy premium amenities and luxury.`}>
+  <div class="relative h-[60vh]">
+    <img src={room.image} alt={room.title} class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="text-white">
+        <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4">{room.title}</h1>
+        <p class="text-xl md:text-2xl font-light">{room.price} / night</p>
+      </div>
+    </div>
+  </div>
+  
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-heading font-bold mb-6">Room Overview</h2>
+          <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+            Experience the epitome of luxury in our {room.title}. Designed with your utmost comfort in mind, this room features contemporary decor, premium furnishings, and state-of-the-art amenities. Whether you're here for business or leisure, you'll find everything you need for a perfect stay.
+          </p>
+          
+          <h3 class="text-2xl font-heading font-bold mb-4">Amenities & Features</h3>
+          <ul class="grid grid-cols-2 gap-4 text-gray-700 mb-8">
+            {room.facilities.map(facility => (
+              <li class="flex items-center gap-2">
+                <span class="text-secondary">✓</span> {facility}
+              </li>
+            ))}
+            <li class="flex items-center gap-2"><span class="text-secondary">✓</span> 24/7 Room Service</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">✓</span> Daily Housekeeping</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">✓</span> In-room Safe</li>
+            <li class="flex items-center gap-2"><span class="text-secondary">✓</span> Premium Toiletries</li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 sticky top-24">
+            <h3 class="text-2xl font-heading font-bold mb-2">Book This Room</h3>
+            <div class="text-3xl text-primary font-bold mb-6">{room.price}<span class="text-base text-gray-500 font-normal">/night</span></div>
+            
+            <div class="space-y-4 mb-6 text-sm text-gray-600 border-t border-b py-4">
+              <div class="flex justify-between">
+                <span>Occupancy:</span>
+                <span class="font-medium text-dark">{room.occupancy}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Room Size:</span>
+                <span class="font-medium text-dark">{room.size}</span>
+              </div>
+            </div>
+            
+            <Button href={`/book-now?room=${room.slug}`} variant="primary" className="w-full">Proceed to Booking</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
