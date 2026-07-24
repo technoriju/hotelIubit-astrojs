@@ -13,7 +13,7 @@ const {
   title = SEOData.title,
   description = SEOData.description,
   canonicalURL = Astro.url.href,
-  image = new URL('/og-image.jpg', Astro.url),
+  image = new URL('/gallery/delux.jpg', Astro.url),
   type = 'website'
 } = Astro.props;
 ---
@@ -38,6 +38,8 @@ const {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
