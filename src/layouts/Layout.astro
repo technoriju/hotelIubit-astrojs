@@ -25,14 +25,38 @@ const { title, description, canonicalURL } = Astro.props;
       "@context": "https://schema.org",
       "@type": "Hotel",
       "name": SITE.name,
-      "image": `${se.siteUrl}/og-image.jpg`,
-      "telephone": SITE.phone,
-      "email": SITE.email,
+      "image": [
+        `${se.siteUrl}/hero/hotel-IUBIT-front-image.webp`,
+        `${se.siteUrl}/gallery/delux.jpg`,
+        `${se.siteUrl}/gallery/super.jpg`,
+        `${se.siteUrl}/gallery/premium.jpg`
+      ],
+      "description": description || se.description || "Comfortable AC rooms, free parking, banquet hall and rooftop restaurant near Muragachha, North 24 Parganas.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": SITE.address,
-        "addressLocality": "Kolkata",
+        "addressLocality": SITE.addressLocality,
+        "addressRegion": SITE.addressRegion,
+        "postalCode": SITE.pincode,
         "addressCountry": "IN"
+      },
+      "telephone": SITE.phone,
+      "priceRange": se.priceRange,
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": se.starRating
+      },
+      "url": `${se.siteUrl}/`,
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "AC Rooms", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Banquet Hall", "value": true }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": se.aggRatingValue,
+        "reviewCount": se.aggReviewCount
       }
     })} />
 
