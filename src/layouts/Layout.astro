@@ -9,9 +9,10 @@ interface Props {
   title?: string;
   description?: string;
   canonicalURL?: string;
+  preloadImage?: string;
 }
 
-const { title, description, canonicalURL } = Astro.props;
+const { title, description, canonicalURL, preloadImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,6 +21,8 @@ const { title, description, canonicalURL } = Astro.props;
 
     <SEO title={title} description={description} canonicalURL={canonicalURL} />
     
+    {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
+
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -61,15 +64,20 @@ const { title, description, canonicalURL } = Astro.props;
     })} />
 
      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P88MLPGQ');
+<script is:inline type="text/javascript">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode?.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P88MLPGQ');
 </script>
 <!-- End Google Tag Manager -->
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P88MLPGQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <main class="flex-grow pt-[72px]">
       <slot />
