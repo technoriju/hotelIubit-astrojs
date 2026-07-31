@@ -38,7 +38,7 @@ export const landingPages = [
   },
   {
     slug: 'luxury-hotel',
-    title: '5-Star Luxury Hotel',
+    title: '3-Star Luxury Hotel',
     heading: 'Experience Ultimate Luxury',
     description: 'Premium suites, fine dining, and personalized service for guests who want the very best Kolkata has to offer.',
     body: `Our premium suites are designed for guests who want more than a place to sleep — a stay that feels like 
