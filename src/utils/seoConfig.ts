@@ -1,7 +1,7 @@
 export const SEO = {
   title: 'Hotel Iubit | Luxury & Comfort',
   description: 'Experience premium luxury and comfort at Hotel Iubit. Book your stay today and enjoy world-class amenities.',
-  siteUrl: 'https://www.hoteliubit.com/',
+  siteUrl: 'https://www.hoteliubit.com',
   priceRange: '₹1200 - ₹1600',
   starRating: '3',
   aggRatingValue: '4.4',
