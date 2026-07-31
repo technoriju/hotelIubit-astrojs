@@ -9,9 +9,10 @@ interface Props {
   title?: string;
   description?: string;
   canonicalURL?: string;
+  preloadImage?: string;
 }
 
-const { title, description, canonicalURL } = Astro.props;
+const { title, description, canonicalURL, preloadImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,32 +21,63 @@ const { title, description, canonicalURL } = Astro.props;
 
     <SEO title={title} description={description} canonicalURL={canonicalURL} />
     
+    {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
+
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Hotel",
       "name": SITE.name,
-      "image": `${se.siteUrl}/og-image.jpg`,
-      "telephone": SITE.phone,
-      "email": SITE.email,
+      "image": [
+        `${se.siteUrl}/hero/hotel-IUBIT-front-image.webp`,
+        `${se.siteUrl}/gallery/delux.jpg`,
+        `${se.siteUrl}/gallery/super.jpg`,
+        `${se.siteUrl}/gallery/premium.jpg`
+      ],
+      "description": description || se.description || "Comfortable AC rooms, free parking, banquet hall and rooftop restaurant near Muragachha, North 24 Parganas.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": SITE.address,
-        "addressLocality": "Kolkata",
+        "addressLocality": SITE.addressLocality,
+        "addressRegion": SITE.addressRegion,
+        "postalCode": SITE.pincode,
         "addressCountry": "IN"
+      },
+      "telephone": SITE.phone,
+      "priceRange": se.priceRange,
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": se.starRating
+      },
+      "url": `${se.siteUrl}/`,
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "AC Rooms", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Banquet Hall", "value": true }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": se.aggRatingValue,
+        "reviewCount": se.aggReviewCount
       }
     })} />
 
      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P88MLPGQ');
+<script is:inline type="text/javascript">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode?.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P88MLPGQ');
 </script>
 <!-- End Google Tag Manager -->
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P88MLPGQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <main class="flex-grow pt-[72px]">
       <slot />
